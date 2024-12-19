@@ -1,0 +1,27 @@
+---
+import "../pages/site.scss"
+
+const props = Astro.props.frontmatter || Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{props.title ? `${props.title} - ` : ""}</title>
+{props.description ?
+	<meta name="Description" content={props.description} /> : ""
+}
+	<meta name="theme-color" content="#4f9adc" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- <meta property="og:image" content={new URL(props.image || "/images/social/banner-v1.jpg", Astro.site)} /> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" /> 
+	<link rel="icon" href="/images/app/logo.svg" />
+	<link rel="mask-icon" href="/images/app/logo-mask.svg" color="#4f9adc" />
+	<link rel="apple-touch-icon" href="/images/app/logo-solid180.png" />
+	<link rel="manifest" href="/app.webmanifest" />
+</head>
+<body>
+<slot></slot>
+</body>
+</html>

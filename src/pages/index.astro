@@ -1,6 +1,10 @@
 ---
-
+import Layout from '../layouts/Base.astro';
+import Base from '../layouts/Base.astro';
+import authConfig from 'auth:config';
 ---
+<Base />
+
 
 <html lang="en">
 	<head>
@@ -10,6 +14,20 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
+
+	
+	
+	<Layout>
+	  <button id="login">Login</button>
+	  <button id="logout">Logout</button>
+	
+	  <script>
+		const { signIn, signOut } = await import("auth-astro/client")
+		document.querySelector("#login").onclick = () => signIn("github")
+		document.querySelector("#logout").onclick = () => signOut()
+	  </script>
+	</Layout>
+
 	<body>
 		<a href="/">Home</a>
         <a href="/about/">About</a>
