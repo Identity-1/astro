@@ -12,5 +12,15 @@ export default defineConfig({
   //...
   integrations: [auth()],
 
-  adapter: netlify()
+  adapter: netlify(),
+
+  vite: {
+    resolve: {
+      alias: {
+        'auth-astro/client': 'node_modules/auth-astro/client/index.js',
+      },
+    },
+  },
+
+
 });

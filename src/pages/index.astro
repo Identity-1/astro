@@ -8,11 +8,18 @@ const session = await getSession(Astro.request);
   <button id="login">Login</button>
   <button id="logout">Logout</button>
 
-  <script type="module">
-    import { signIn, signOut } from "auth-astro/client";
+  <script type="module" is:inline>
+    import { signIn, signOut } from '../../node_modules/auth-astro/client.ts';
 
-    document.querySelector("#login").onclick = () => signIn("github");
-    document.querySelector("#logout").onclick = () => signOut();
+    document.querySelector("#login").onclick = () => {
+      console.log("Login button clicked");
+      signIn("github").catch((err) => console.error("SignIn Error:", err));
+    };
+
+    document.querySelector("#logout").onclick = () => {
+      console.log("Logout button clicked");
+      signOut().catch((err) => console.error("SignOut Error:", err));
+    };
   </script>
 
   {
